@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HeyZenzai — AI WhatsApp Booking Agent for Beauty &amp; Wellness SMEs</title>
+  <meta name="description" content="HeyZenzai automates your WhatsApp bookings with AI. Cut no-shows by up to 80%, respond in under 5 seconds, and capture after-hours revenue — all for less than the cost of a part-time receptionist. Launching in Singapore, expanding globally." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+
+  <!-- ====== NAV ====== -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo" id="logo-link">
+        <span class="logo-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
+        <span class="logo-text">HeyZen<span class="logo-accent">zai</span></span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#early-access">Early Access</a></li>
+      </ul>
+      <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
+      <a href="#contact" class="btn-nav" id="nav-cta">Request Early Access</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="container hero-container">
+      <!-- LEFT COLUMN -->
+      <div class="hero-left">
+        <div class="hero-badge animate-in" style="--delay:0s">
+          <span class="badge-dot"></span>
+          AI WhatsApp Booking Agent for Beauty &amp; Wellness
+        </div>
+        <h1 class="hero-title animate-in" style="--delay:0.1s">
+          Your <span class="gradient-text">WhatsApp Front Desk</span><br/>
+          Never Sleeps. Never Misses.<br/>
+          <span class="hero-sub-highlight">A fraction of a receptionist's cost.</span>
+        </h1>
+        <p class="hero-desc animate-in" style="--delay:0.2s">
+          HeyZenzai's AI booking agent answers every WhatsApp inquiry in <strong>&lt;5 seconds</strong>, eliminates no-shows by up to <strong>80%</strong>, and captures after-hours bookings your team misses — from <strong>SGD 39/month</strong> on an annual plan.
+        </p>
+        <div class="hero-ctas animate-in" style="--delay:0.3s">
+          <a href="#contact" class="btn-primary" id="hero-cta-primary">
+            <span>Request Early Access</span>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#how-it-works" class="btn-secondary" id="hero-cta-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/></svg>
+            See How It Works
+          </a>
+        </div>
+        <div class="hero-stats animate-in" style="--delay:0.5s">
+          <div class="stat">
+            <span class="stat-num" data-target="80">0</span><span class="stat-unit">%</span>
+            <span class="stat-label">No-Show Reduction</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="5">0</span><span class="stat-unit">s</span>
+            <span class="stat-label">Response Time</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="24">0</span><span class="stat-unit">/7</span>
+            <span class="stat-label">Always Available</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat">
+            <span class="stat-num" data-target="98">0</span><span class="stat-unit">%</span>
+            <span class="stat-label">WhatsApp Open Rate</span>
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT COLUMN -->
+      <div class="hero-visual animate-in" style="--delay:0.4s">
+      <div class="phone-mockup">
+        <div class="phone-frame">
+          <div class="phone-screen">
+            <div class="wa-header">
+              <div class="wa-avatar">
+                <span>🌸</span>
+              </div>
+              <div class="wa-info">
+                <span class="wa-name">Luna Aesthetic Clinic</span>
+                <span class="wa-status">● Online — AI Agent Active</span>
+              </div>
+            </div>
+            <div class="wa-chat" id="wa-chat">
+              <div class="msg-row client">
+                <div class="msg-bubble">Hi! I want to book a hydra facial for tomorrow afternoon 🙏</div>
+                <span class="msg-time">2:47 PM</span>
+              </div>
+              <div class="msg-row bot typing-start">
+                <div class="typing-indicator"><span></span><span></span><span></span></div>
+              </div>
+              <div class="msg-row bot hidden" id="bot-msg-1">
+                <div class="msg-bubble">Hi Sarah! 😊 I can see we have 2 slots tomorrow afternoon — <strong>2:30 PM</strong> and <strong>4:00 PM</strong> with Dr. Lim. Which works best for you?</div>
+                <span class="msg-time">2:47 PM ✓✓</span>
+              </div>
+              <div class="msg-row client hidden" id="client-msg-2">
+                <div class="msg-bubble">4 PM please! And do you do laser hair removal?</div>
+                <span class="msg-time">2:48 PM</span>
+              </div>
+              <div class="msg-row bot hidden" id="bot-msg-2">
+                <div class="msg-bubble"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Confirmed! <strong>Hydra Facial</strong> on <strong>Thursday, 4:00 PM</strong> with Dr. Lim.<br/><br/>Yes — we offer Soprano Titanium laser hair removal. Prices start at SGD 180/session. Want me to book a complimentary consultation? <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></div>
+                <span class="msg-time">2:48 PM ✓✓</span>
+              </div>
+            </div>
+            <div class="wa-input-bar">
+              <span class="wa-input-placeholder">Message</span>
+              <div class="wa-send-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="phone-badge phone-badge-1">
+          <span class="badge-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
+          <span>Responded in <strong>1.2s</strong></span>
+        </div>
+        <div class="phone-badge phone-badge-2">
+          <span class="badge-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></span>
+          <span>Booked at <strong>2:48 AM</strong></span>
+        </div>
+      </div><!-- end hero-visual -->
+    </div><!-- end hero-container -->
+  </section>
+
+  <!-- ====== SOCIAL PROOF TICKER ====== -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <span>💬 80.1% of Singaporeans Use WhatsApp Monthly</span>
+      <span>•</span>
+      <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Average Reply Time: Under 5 Seconds</span>
+      <span>•</span>
+      <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> Clinics Lose SGD 100K+/yr to No-Shows — We Fix That</span>
+      <span>•</span>
+      <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> PDPA Compliant — Zero Data Risks</span>
+      <span>•</span>
+      <span>🚀 Now Accepting Founding Members — Limited Slots</span>
+      <span>•</span>
+      <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Live in 48 Hours — No Migration Required</span>
+      <span>•</span>
+      <span>💬 80.1% of Singaporeans Use WhatsApp Monthly</span>
+      <span>•</span>
+      <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Average Reply Time: Under 5 Seconds</span>
+      <span>•</span>
+      <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg> Clinics Lose SGD 100K+/yr to No-Shows — We Fix That</span>
+      <span>•</span>
+      <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> PDPA Compliant — Zero Data Risks</span>
+      <span>•</span>
+      <span>🚀 Now Accepting Founding Members — Limited Slots</span>
+      <span>•</span>
+      <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> Live in 48 Hours — No Migration Required</span>
+      <span>•</span>
+    </div>
+  </div>
+
+  <!-- ====== PROBLEM SECTION ====== -->
+  <section class="problem-section" id="problem">
+    <div class="container">
+      <div class="section-label">The Problem</div>
+      <h2 class="section-title">Your Front Desk Is <span class="gradient-text">Bleeding Money</span></h2>
+      <p class="section-desc">Beauty &amp; wellness clinic owners are caught in a perfect storm of operational failure — quietly draining tens of thousands every year. We've seen it up close in Singapore, and it's the same story everywhere.</p>
+
+      <div class="pain-grid">
+        <div class="pain-card" id="pain-1">
+          <div class="pain-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></div>
+          <div class="pain-stat">SGD 100K+</div>
+          <div class="pain-title">Lost to No-Shows Annually</div>
+          <p class="pain-desc">The average aesthetic clinic has an 18% no-show rate. With 10 missed slots/week at SGD 200/slot, that's over SGD 104,000 walking out the door every year — silently.</p>
+        </div>
+        <div class="pain-card" id="pain-2">
+          <div class="pain-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"></circle><polyline points="12 9 12 13 14 15"></polyline><line x1="5" y1="3" x2="7" y2="5"></line><line x1="19" y1="3" x2="17" y2="5"></line></svg></div>
+          <div class="pain-stat">65%</div>
+          <div class="pain-title">Clients Leave After 15 Minutes</div>
+          <p class="pain-desc">65% of Singaporean consumers abandon a booking if they don't get a WhatsApp reply within 15 minutes. Your receptionist is with someone. That lead is now at your competitor.</p>
+        </div>
+        <div class="pain-card" id="pain-3">
+          <div class="pain-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2"></path><rect x="3" y="4" width="18" height="18" rx="2"></rect><circle cx="12" cy="10" r="2"></circle><line x1="8" y1="2" x2="8" y2="4"></line><line x1="16" y1="2" x2="16" y2="4"></line></svg></div>
+          <div class="pain-stat">SGD 3,000</div>
+          <div class="pain-title">Monthly Receptionist Cost</div>
+          <p class="pain-desc">A front-desk receptionist costs SGD 2,500–3,000/month — and they can't answer WhatsApp at 11 PM, manage walk-ins, process payments, AND respond instantly to 20 chats simultaneously.</p>
+        </div>
+        <div class="pain-card" id="pain-4">
+          <div class="pain-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></div>
+          <div class="pain-stat">30%</div>
+          <div class="pain-title">Bookings Happen After Hours</div>
+          <p class="pain-desc">Busy professionals in the CBD browse and book during commutes and evenings. If your WhatsApp goes silent after 7 PM, you're invisibly handing those high-value clients to faster clinics.</p>
+        </div>
+      </div>
+
+      <div class="problem-callout">
+        <div class="callout-icon">💡</div>
+        <div class="callout-text">
+          <strong>The harsh truth:</strong> You're not losing business because of bad service. You're losing it because of slow, inconsistent, human-limited front-desk communication in a city that demands instant responses 24/7.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== HOW IT WORKS ====== -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-label">How It Works</div>
+      <h2 class="section-title">Three AI Agents Working <span class="gradient-text">In Perfect Unison</span></h2>
+      <p class="section-desc">Not your average chatbot. HeyZenzai deploys a deterministic multi-agent architecture that eliminates hallucinations, handles compound queries, and never makes a mistake.</p>
+
+      <div class="agents-flow">
+        <div class="agent-card" id="agent-1">
+          <div class="agent-num">01</div>
+          <div class="agent-icon-wrap">
+            <div class="agent-icon">🧠</div>
+          </div>
+          <h3 class="agent-title">Intent Router</h3>
+          <p class="agent-desc">Instantly parses every WhatsApp message — even complex, multi-intent ones — and routes each request to the correct specialist agent. Booking, reschedule, FAQ, or human escalation. Zero confusion.</p>
+          <div class="agent-example">
+            <span class="example-label">Example Input</span>
+            <span class="example-msg">"Can I move my Tuesday facial and also — do you offer laser?"</span>
+          </div>
+        </div>
+        <div class="agent-arrow">→</div>
+        <div class="agent-card" id="agent-2">
+          <div class="agent-num">02</div>
+          <div class="agent-icon-wrap">
+            <div class="agent-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+          </div>
+          <h3 class="agent-title">Booking Engine</h3>
+          <p class="agent-desc">Interfaces directly with your Google Calendar or Apple Calendar via strict JSON. Presents verified real-time slots. Cannot hallucinate prices or double-book. Acts as a precise API translator, not a creative writer.</p>
+          <div class="agent-example">
+            <span class="example-label">What It Does</span>
+            <span class="example-msg">Queries calendar → Confirms available slots → Books appointment → Sends confirmation</span>
+          </div>
+        </div>
+        <div class="agent-arrow">→</div>
+        <div class="agent-card" id="agent-3">
+          <div class="agent-num">03</div>
+          <div class="agent-icon-wrap">
+            <div class="agent-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg></div>
+          </div>
+          <h3 class="agent-title">Retention Engine</h3>
+          <p class="agent-desc">Runs silently in the background. Sends automated reminders to crush no-shows. Triggers personalized re-booking nudges exactly when clients are due for their next visit. Compresses no-show rates from 18% → under 3%.</p>
+          <div class="agent-example">
+            <span class="example-label">Auto-Message</span>
+            <span class="example-msg">"Hi Sarah 🌸 It's been 4 weeks since your facial. Want me to book your next slot for Thursday?"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="setup-strip">
+        <div class="setup-step">
+          <span class="step-num">1</span>
+          <span class="step-text">Connect your WhatsApp Business number</span>
+        </div>
+        <div class="setup-arrow">→</div>
+        <div class="setup-step">
+          <span class="step-num">2</span>
+          <span class="step-text">Sync Google or Apple Calendar</span>
+        </div>
+        <div class="setup-arrow">→</div>
+        <div class="setup-step">
+          <span class="step-num">3</span>
+          <span class="step-text">Upload your service menu & pricing</span>
+        </div>
+        <div class="setup-arrow">→</div>
+        <div class="setup-step">
+          <span class="step-num">4</span>
+          <span class="step-text"><strong>Go live in 48 hours</strong> ✓</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FEATURES ====== -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything You Need. <span class="gradient-text">Nothing You Don't.</span></h2>
+      <p class="section-desc">No new software to learn. No dashboard to babysit. It works invisibly inside the WhatsApp your clients already love.</p>
+
+      <div class="features-grid">
+        <div class="feature-card feature-card--large" id="feat-1">
+          <div class="feat-icon">💬</div>
+          <h3>Native WhatsApp Integration</h3>
+          <p>Clients never leave WhatsApp. No external web links. No app downloads. No friction. Just seamless, instant conversation — the way Singaporeans already communicate.</p>
+          <div class="feat-tag">✓ 98% Open Rate</div>
+        </div>
+        <div class="feature-card" id="feat-2">
+          <div class="feat-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+          <h3>Sub-5-Second Responses</h3>
+          <p>Every inquiry answered instantly, even at 2 AM on a Sunday. Never lose another lead to a slow reply.</p>
+        </div>
+        <div class="feature-card" id="feat-3">
+          <div class="feat-icon">🚫</div>
+          <h3>Zero Hallucinations</h3>
+          <p>Strict JSON enforcement prevents AI from inventing prices, availability, or services. Clinically precise every time.</p>
+        </div>
+        <div class="feature-card" id="feat-4">
+          <div class="feat-icon">📆</div>
+          <h3>Multi-Intent Query Handling</h3>
+          <p>"Reschedule my facial AND ask about laser" — handled in one message. No bot confusion. No dead ends.</p>
+        </div>
+        <div class="feature-card" id="feat-5">
+          <div class="feat-icon">🔔</div>
+          <h3>Automated Reminders</h3>
+          <p>Pre-appointment reminders sent automatically. No-show rates drop from 18% to under 3%, recovering SGD 50K+ per year.</p>
+        </div>
+        <div class="feature-card" id="feat-6">
+          <div class="feat-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg></div>
+          <h3>Smart Re-booking Nudges</h3>
+          <p>Automatically messages clients 4 weeks after their last visit. Higher LTV, zero extra effort from your team.</p>
+        </div>
+        <div class="feature-card feature-card--large" id="feat-7">
+          <div class="feat-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+          <h3>PDPA Compliant by Design</h3>
+          <p>Acts as a Data Intermediary. Only collects booking-required data. Client data is never used to train AI models. Ring-fenced, sovereign, and fully compliant with Singapore law.</p>
+          <div class="feat-tag">✓ Legally Safe to Deploy</div>
+        </div>
+        <div class="feature-card" id="feat-8">
+          <div class="feat-icon">🔗</div>
+          <h3>Calendar Integration</h3>
+          <p>Direct sync with Google Calendar & Apple Calendar. No new POS to install, no migration headaches.</p>
+        </div>
+        <div class="feature-card" id="feat-9">
+          <div class="feat-icon">🌍</div>
+          <h3>Platform Independent</h3>
+          <p>Built on portable AI infrastructure. If WhatsApp changes pricing, we move to Telegram or web chat — zero disruption to your operations.</p>
+        </div>
+        <div class="feature-card" id="feat-10">
+          <div class="feat-icon">📊</div>
+          <h3>Revenue Analytics</h3>
+          <p>Track bookings, no-show rates, after-hours capture, and revenue recovery — all in a lightweight, clean dashboard.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== COMPARISON ====== -->
+  <section class="comparison-section" id="comparison">
+    <div class="container">
+      <div class="section-label">Why HeyZenzai</div>
+      <h2 class="section-title">Overpaying for <span class="gradient-text">Half a Solution?</span></h2>
+      <p class="section-desc">See why HeyZenzai destroys legacy platforms on every metric that matters to your bottom line.</p>
+
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="col-zenoti">Zenoti</th>
+              <th class="col-fresha">Fresha</th>
+              <th class="col-us">HeyZenzai <svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monthly Cost</td>
+              <td class="col-zenoti bad">USD 300–400+ base<br/><small>+ USD 169 WhatsApp add-on</small></td>
+              <td class="col-fresha mid">"Free"<br/><small>But 20% commission on every new client</small></td>
+              <td class="col-us good">SGD 49 flat<br/><small>Zero hidden fees</small></td>
+            </tr>
+            <tr>
+              <td>WhatsApp Native Booking</td>
+              <td class="col-zenoti bad">❌ Expensive add-on</td>
+              <td class="col-fresha bad">❌ Forces clients to external web links</td>
+              <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Fully native in-chat</td>
+            </tr>
+            <tr>
+              <td>Multi-Intent AI Handling</td>
+              <td class="col-zenoti mid">⚠️ Complex, costly AI bolt-on</td>
+              <td class="col-fresha bad">❌ None</td>
+              <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Core architecture</td>
+            </tr>
+            <tr>
+              <td>Hallucination Risk</td>
+              <td class="col-zenoti mid">⚠️ Present in AI modules</td>
+              <td class="col-fresha mid">N/A</td>
+              <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Zero — deterministic JSON</td>
+            </tr>
+            <tr>
+              <td>No-Show Reminders</td>
+              <td class="col-zenoti mid">⚠️ Manual or expensive module</td>
+              <td class="col-fresha mid">⚠️ Basic SMS/Email only</td>
+              <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Automated WhatsApp reminders</td>
+            </tr>
+            <tr>
+              <td>Marketplace Commission</td>
+              <td class="col-zenoti good">None</td>
+              <td class="col-fresha bad">20% per new client booking</td>
+              <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Zero — you keep all revenue</td>
+            </tr>
+            <tr>
+              <td>Contract Lock-in</td>
+              <td class="col-zenoti bad">12-month minimum</td>
+              <td class="col-fresha good">None</td>
+              <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Month-to-month</td>
+            </tr>
+            <tr>
+              <td>Setup Complexity</td>
+              <td class="col-zenoti bad">🔴 Months of integration</td>
+              <td class="col-fresha mid">🟡 Medium</td>
+              <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Live in 48 hours</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOUNDING MEMBER SECTION ====== -->
+  <section class="grants-section" id="early-access">
+    <div class="container">
+      <div class="section-label">Early Access</div>
+      <h2 class="section-title">Become a <span class="gradient-text">Founding Member</span></h2>
+      <p class="section-desc">We're only onboarding a small cohort of clinics who want to shape what comes next. Founding Members get benefits that will never be offered again.</p>
+
+      <div class="grants-grid">
+        <div class="grant-card grant-card--highlight" id="founding-1">
+          <div class="grant-logo"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+          <div class="grant-name">Price Locked Forever</div>
+          <div class="grant-amount">SGD 49/month</div>
+          <p class="grant-desc">Whatever our pricing becomes as we scale, Founding Members keep SGD 49/month for life. No surprise increases. No re-negotiations. You're in at the ground floor.</p>
+          <div class="grant-impact">
+            <span class="impact-label">As features grow, your rate stays:</span>
+            <span class="impact-val">SGD 49/month — always</span>
+          </div>
+        </div>
+
+        <div class="grant-card" id="founding-2">
+          <div class="grant-logo"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg></div>
+          <div class="grant-name">Direct Founder Access</div>
+          <div class="grant-amount">You Shape the Product</div>
+          <p class="grant-desc">Founding Members get a direct line to our founding team. Request features. Flag issues. Get responses in hours, not tickets. You're a partner, not just a customer.</p>
+          <div class="grant-impact">
+            <span class="impact-label">Support level:</span>
+            <span class="impact-val">WhatsApp directly with the founders</span>
+          </div>
+        </div>
+
+        <div class="grant-card" id="founding-3">
+          <div class="grant-logo"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+          <div class="grant-name">48-Hour Concierge Setup</div>
+          <div class="grant-amount">Zero Effort From You</div>
+          <p class="grant-desc">We do everything. WhatsApp Business API setup, calendar sync, service menu ingestion, tone calibration, test runs. You approve. We launch. All within 48 hours.</p>
+          <div class="grant-impact">
+            <span class="impact-label">Setup fee for Founding Members:</span>
+            <span class="impact-val">Waived on annual plan</span>
+          </div>
+        </div>
+
+        <div class="grants-math" id="founding-math">
+          <h3 class="math-title">What Could Change in Your First Month</h3>
+          <div class="math-grid">
+            <div class="math-item">
+              <span class="math-label">Your monthly platform cost</span>
+              <span class="math-val">From SGD 39</span>
+            </div>
+            <div class="math-minus">vs</div>
+            <div class="math-item">
+              <span class="math-label">Potential no-show revenue recovered*</span>
+              <span class="math-val text-green">SGD 4,000–15,000</span>
+            </div>
+            <div class="math-plus">+</div>
+            <div class="math-item">
+              <span class="math-label">After-hours bookings you'd otherwise miss</span>
+              <span class="math-val text-green">30%+ of evening inquiries</span>
+            </div>
+            <div class="math-equals">=</div>
+            <div class="math-item math-item--result">
+              <span class="math-label">Your potential net position</span>
+              <span class="math-val text-gold">ROI positive — often within the first week</span>
+            </div>
+          </div>
+          <p class="math-footnote">*Estimate based on industry average no-show rates (15–18%) and typical beauty clinic ticket sizes. Your result depends on your specific situation — use the ROI calculator below to run your own numbers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== PRICING ====== -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Commit Longer, <span class="gradient-text">Pay Less.</span></h2>
+      <p class="section-desc">Transparent, founder-friendly pricing. No per-staff charges. No marketplace commissions. Longer commitment = better rate.</p>
+
+      <!-- Commitment toggle -->
+      <div class="pricing-toggle" id="pricing-toggle">
+        <button class="ptoggle-btn active" data-period="monthly" onclick="switchPlan('monthly')">Monthly</button>
+        <button class="ptoggle-btn" data-period="biannual" onclick="switchPlan('biannual')">6 Months <span class="ptoggle-save">Save 14%</span></button>
+        <button class="ptoggle-btn" data-period="annual" onclick="switchPlan('annual')">Annual <span class="ptoggle-save">Save 20%</span></button>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card" id="plan-starter">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">
+            <span class="price-currency">SGD</span>
+            <span class="price-amount" id="starter-price">49</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="plan-billing" id="starter-billing">+ SGD 149 one-time setup</div>
+          <div class="plan-founding-badge">✓ Founding Member Rate</div>
+          <ul class="plan-features">
+            <li>✓ Full AI multi-agent system</li>
+            <li>✓ WhatsApp Business API integration</li>
+            <li>✓ Google &amp; Apple Calendar sync</li>
+            <li>✓ Automated no-show reminders</li>
+            <li>✓ Smart re-booking nudges</li>
+            <li>✓ Unlimited staff members</li>
+            <li>✓ Zero marketplace commissions</li>
+            <li>✓ PDPA-compliant data handling</li>
+            <li>✓ Revenue analytics dashboard</li>
+          </ul>
+          <div class="plan-usage-note">
+            <span>📩 Usage-based messaging: ~SGD 5.40/month at standard volume</span>
+          </div>
+          <a href="#contact" class="btn-plan" id="plan-starter-cta">Get Started</a>
+        </div>
+
+        <div class="pricing-card pricing-card--pro" id="plan-pro">
+          <div class="plan-badge-ribbon">Most Popular</div>
+          <div class="plan-name">Growth</div>
+          <div class="plan-price">
+            <span class="price-currency">SGD</span>
+            <span class="price-amount" id="growth-price">149</span>
+            <span class="price-period">/month</span>
+          </div>
+          <div class="plan-billing" id="growth-billing">+ SGD 149 one-time setup</div>
+          <div class="plan-founding-badge">✓ Founding Member Rate</div>
+          <ul class="plan-features">
+            <li>✓ Everything in Starter, plus:</li>
+            <li>✓ Multi-location support (up to 3)</li>
+            <li>✓ Bulk retention campaign broadcasts</li>
+            <li>✓ Advanced analytics &amp; revenue reports</li>
+            <li>✓ Custom AI persona &amp; tone of voice</li>
+            <li>✓ Priority support (2-hour SLA)</li>
+            <li>✓ Direct founder WhatsApp access</li>
+            <li>✓ Dedicated account manager</li>
+          </ul>
+          <div class="plan-usage-note">
+            <span>📩 Usage-based messaging: ~SGD 5.40/month at standard volume</span>
+          </div>
+          <a href="#contact" class="btn-plan btn-plan--pro" id="plan-growth-cta">Get Started</a>
+        </div>
+      </div>
+
+      <div class="pricing-guarantee" id="pricing-guarantee">
+        <div class="guarantee-icon">🛡️</div>
+        <div class="guarantee-text">
+          <strong>No lock-in on monthly.</strong> Pay month-to-month and cancel anytime. Choose 6-month or annual for a better rate and setup savings. All plans include hands-on onboarding support from our team.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== ROI CALCULATOR ====== -->
+  <section class="roi-section" id="roi">
+    <div class="container">
+      <div class="section-label">ROI Calculator</div>
+      <h2 class="section-title">See Your <span class="gradient-text">Exact ROI</span> in Seconds</h2>
+      <p class="section-desc">Enter your clinic's details and see exactly how much HeyZenzai will recover for you each month.</p>
+
+      <div class="roi-calculator" id="roi-calculator">
+        <div class="roi-inputs">
+          <div class="roi-input-group">
+            <label for="avg-ticket">Average service ticket (SGD)</label>
+            <input type="number" id="avg-ticket" value="200" min="50" max="2000" />
+          </div>
+          <div class="roi-input-group">
+            <label for="weekly-bookings">Weekly appointments</label>
+            <input type="number" id="weekly-bookings" value="50" min="10" max="500" />
+          </div>
+          <div class="roi-input-group">
+            <label for="noshows">Current no-show rate (%)</label>
+            <input type="number" id="noshows" value="15" min="1" max="40" />
+          </div>
+        </div>
+
+        <div class="roi-results" id="roi-results">
+          <div class="roi-result-card" id="roi-recovered">
+            <div class="roi-result-label">Monthly Revenue Recovered</div>
+            <div class="roi-result-value" id="val-recovered">SGD 8,400</div>
+            <div class="roi-result-sub">From no-show reduction alone</div>
+          </div>
+          <div class="roi-result-card" id="roi-labor">
+            <div class="roi-result-label">Labor Cost Saved</div>
+            <div class="roi-result-value" id="val-labor">SGD 3,000</div>
+            <div class="roi-result-sub">vs. full-time receptionist</div>
+          </div>
+          <div class="roi-result-card roi-result-card--highlight" id="roi-total">
+            <div class="roi-result-label">Total Monthly Benefit</div>
+            <div class="roi-result-value" id="val-total">SGD 11,400</div>
+            <div class="roi-result-sub">vs. SGD 49 platform cost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== WHAT WE'RE BUILT TO DO ====== -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="container">
+      <div class="section-label">Pre-Launch</div>
+      <h2 class="section-title">Built to Deliver. <span class="gradient-text">From Day One.</span></h2>
+      <p class="section-desc">We're pre-launch — so instead of showing you results we haven't earned yet, here's exactly what HeyZenzai is <strong>engineered to do</strong> from the moment it goes live in your clinic.</p>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card" id="cap-1">
+          <div class="test-stars"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></div>
+          <blockquote class="test-quote">"Your WhatsApp goes quiet after 7 PM. But your clients don't."<br/><br/>HeyZenzai is designed to handle every incoming message — day or night — with a response dispatched in under 5 seconds. No queue. No voicemail. No 'sorry, we're closed.'</blockquote>
+          <div class="test-author">
+            <div class="test-avatar" style="background: linear-gradient(135deg, #6366f1, #8b5cf6)">24/7</div>
+            <div>
+              <div class="test-name">Always-On Availability</div>
+              <div class="test-role">Designed into the core architecture</div>
+            </div>
+          </div>
+          <div class="test-metrics">
+            <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg> Target response time: &lt;5 seconds</span>
+            <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg> Operates 24/7, including public holidays</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="cap-2">
+          <div class="test-stars">🛡️🛡️🛡️🛡️🛡️</div>
+          <blockquote class="test-quote">"The biggest fear with AI? It says the wrong thing."<br/><br/>HeyZenzai runs on strict JSON-enforced logic — it cannot invent prices, fabricate availability, or double-book slots. Every response is sourced from your actual calendar and service menu. Nothing invented.</blockquote>
+          <div class="test-author">
+            <div class="test-avatar" style="background: linear-gradient(135deg, #ec4899, #f43f5e)"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+            <div>
+              <div class="test-name">Zero Hallucination by Design</div>
+              <div class="test-role">Deterministic logic, not generative guessing</div>
+            </div>
+          </div>
+          <div class="test-metrics">
+            <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Bookings pulled directly from your calendar</span>
+            <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Prices sourced from your service menu only</span>
+          </div>
+        </div>
+
+        <div class="testimonial-card" id="cap-3">
+          <div class="test-stars"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
+          <blockquote class="test-quote">"No-shows don't just lose you one appointment. They lose you the slot, the revenue, and the relationship."<br/><br/>HeyZenzai's Retention Engine is designed to send automated reminders before every appointment, and re-engagement messages when clients go quiet — hands-free, every time.</blockquote>
+          <div class="test-author">
+            <div class="test-avatar" style="background: linear-gradient(135deg, #10b981, #059669)">📩</div>
+            <div>
+              <div class="test-name">Automated No-Show Defence</div>
+              <div class="test-role">Runs silently in the background</div>
+            </div>
+          </div>
+          <div class="test-metrics">
+            <span>🔔 Pre-appointment reminders, automated</span>
+            <span><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg> Re-booking nudges when clients go quiet</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="problem-callout" style="margin-top: 40px;">
+        <div class="callout-icon">📋</div>
+        <div class="callout-text">
+          <strong>We're looking for our first clinics.</strong> When you join as a Founding Member, you'll generate real results — and we'll publish them right here (with your permission). <a href="#contact" style="color: var(--accent-green); text-decoration: underline;">Apply for early access →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== CONTACT / CTA SECTION ====== -->
+  <section class="contact-section" id="contact">
+    <div class="contact-bg"></div>
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-left">
+          <div class="section-label">Get Started</div>
+          <h2 class="section-title">Join as a <span class="gradient-text">Founding Member</span></h2>
+          <p class="section-desc">I'll personally set up your account within 48 hours. Pick the plan that fits your cash flow — you can always upgrade later.</p>
+
+          <div class="founder-note">
+            <div class="founder-avatar">Z</div>
+            <div class="founder-msg">
+              <strong>From the founder</strong><br/>
+              I'm building HeyZenzai because I watched a family member lose bookings daily at her salon. I'll be the one onboarding you personally and responding to your questions directly on WhatsApp.
+            </div>
+          </div>
+
+          <div class="contact-checklist">
+            <div class="check-item">✓ No lock-in on monthly plans</div>
+            <div class="check-item">✓ I set everything up for you personally</div>
+            <div class="check-item">✓ Live in 48 hours or less</div>
+            <div class="check-item">✓ Your rate is locked in for life</div>
+            <div class="check-item">✓ Setup fee waived on annual plan</div>
+          </div>
+
+          <div class="contact-urgency">
+            <div class="urgency-icon">🔥</div>
+            <div class="urgency-text">
+              <strong>Small cohort, on purpose.</strong> I'm a solo founder — I can only give every clinic proper attention if I onboard a small number at a time. Once the cohort is full, I'll open a waitlist.
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-right">
+          <form class="contact-form" id="contact-form" onsubmit="handleSubmit(event)">
+            <!-- Honeypot Bot Trap -->
+            <input type="text" id="bot-field" style="display:none" tabindex="-1" autocomplete="off" />
+            
+            <div class="form-group">
+              <label for="f-name">Your Name</label>
+              <input type="text" id="f-name" placeholder="Sarah Lim" required />
+            </div>
+            <div class="form-group">
+              <label for="f-phone">WhatsApp Number</label>
+              <input type="tel" id="f-phone" placeholder="+65 9123 4567" required />
+            </div>
+            <div class="form-group">
+              <label for="f-type">Type of Business</label>
+              <select id="f-type" required>
+                <option value="">Select your business type</option>
+                <option value="aesthetic-clinic">Aesthetic / Medical Clinic</option>
+                <option value="salon">Hair Salon</option>
+                <option value="spa">Spa / Wellness Centre</option>
+                <option value="nail">Nail Salon</option>
+                <option value="other">Other Beauty Business</option>
+              </select>
+            </div>
+            
+            <!-- Google reCAPTCHA v2 Widget -->
+            <div class="g-recaptcha" data-sitekey="6Lco2KcsAAAAADPNP8zyFESoy2jlIjAS3Es4ltH8" style="margin-bottom: 1.5rem;"></div>
+
+            <button type="submit" class="btn-submit" id="submit-btn">
+              <span id="submit-text">Request Early Access →</span>
+              <span id="submit-loading" class="hidden">Sending your request...</span>
+            </button>
+            <p class="form-disclaimer">No commitment, no payment upfront. We'll be in touch once we review your request.</p>
+
+            <div class="form-success hidden" id="form-success">
+              <div class="success-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+              <div>
+                  <strong>You're in — welcome to the founding cohort! 🚀</strong><br/>
+                Sit tight. We'll be in touch soon to kick things off. Your business is about to make a serious leap.
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo">
+            <span class="logo-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
+            <span class="logo-text">HeyZen<span class="logo-accent">zai</span></span>
+          </div>
+          <p class="footer-tagline">AI-powered WhatsApp booking for beauty &amp; wellness businesses. Launching in Singapore &middot; expanding globally. Cutting no-shows. Capturing after-hours revenue. 24/7.</p>
+          <div class="footer-badges">
+            <span class="footer-badge">🚀 Pre-Launch</span>
+            <span class="footer-badge"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> PDPA Compliant</span>
+            <span class="footer-badge">💬 WhatsApp Native</span>
+          </div>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Product</h4>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#comparison">vs. Zenoti / Fresha</a>
+          </div>
+          <div class="footer-col">
+            <h4>Why HeyZenzai</h4>
+            <a href="#problem">The Problem</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#early-access">Founding Members</a>
+            <a href="#roi">ROI Calculator</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#contact">Contact Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">PDPA Statement</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 HeyZenzai · Singapore · <a href="#">Privacy & Data Policy</a></p>
+        <p class="footer-disclaimer">HeyZenzai is currently in pre-launch. We are committed to PDPA-compliant data handling. Client data is never used to train AI models and is never shared with third parties.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
