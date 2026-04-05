@@ -84,16 +84,18 @@ function runChatAnimation() {
   const botMsg1 = document.getElementById('bot-msg-1');
   const clientMsg2 = document.getElementById('client-msg-2');
   const botMsg2 = document.getElementById('bot-msg-2');
+  const chat = document.querySelector('.wa-chat');
 
   if (!typing || !botMsg1) return;
 
   const seq = [
     { delay: 2000, action: () => { typing.classList.remove('typing-start'); } },
-    { delay: 800,  action: () => { typing.classList.add('hidden'); botMsg1.classList.remove('hidden'); } },
-    { delay: 2200, action: () => { clientMsg2.classList.remove('hidden'); } },
-    { delay: 1800, action: () => { botMsg2.classList.remove('hidden'); } },
+    { delay: 800,  action: () => { typing.classList.add('hidden'); botMsg1.classList.remove('chat-hidden'); botMsg1.classList.add('chat-visible'); } },
+    { delay: 2200, action: () => { clientMsg2.classList.remove('chat-hidden'); clientMsg2.classList.add('chat-visible'); } },
+    { delay: 1800, action: () => { botMsg2.classList.remove('chat-hidden'); botMsg2.classList.add('chat-visible'); } },
     { delay: 6000, action: () => resetChat() }
   ];
+
 
   let accum = 0;
   seq.forEach(({ delay, action }) => {
@@ -110,9 +112,9 @@ function resetChat() {
 
   if (!typing) return;
 
-  botMsg1?.classList.add('hidden');
-  clientMsg2?.classList.add('hidden');
-  botMsg2?.classList.add('hidden');
+  botMsg1?.classList.remove('chat-visible'); botMsg1?.classList.add('chat-hidden');
+  clientMsg2?.classList.remove('chat-visible'); clientMsg2?.classList.add('chat-hidden');
+  botMsg2?.classList.remove('chat-visible'); botMsg2?.classList.add('chat-hidden');
   typing.classList.remove('hidden');
   typing.classList.add('typing-start');
 

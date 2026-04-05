@@ -64,6 +64,19 @@ input, select, textarea, button { font-family: inherit; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .hidden { display: none !important; }
 
+/* Chat messages: use opacity instead of display so phone height stays fixed */
+.chat-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.chat-visible {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.4s ease;
+}
+
+
 .gradient-text {
   background: var(--gradient-brand);
   -webkit-background-clip: text;
@@ -476,7 +489,8 @@ input, select, textarea, button { font-family: inherit; }
   flex-direction: column;
   gap: 10px;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' opacity='0.03'%3E%3Ctext y='28' font-size='24'%3E🌿%3C/text%3E%3C/svg%3E") #071628;
-  min-height: 300px;
+  height: auto;
+  overflow: hidden;
 }
 
 .msg-row { display: flex; flex-direction: column; max-width: 85%; }
