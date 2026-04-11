@@ -253,10 +253,11 @@ input, select, textarea, button { font-family: inherit; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
   background-size: 48px 48px;
   pointer-events: none;
+  opacity: 0.7; /* base opacity — overall grid reduced */
 }
 
 .hero-orbs {
@@ -323,61 +324,154 @@ input, select, textarea, button { font-family: inherit; }
   50% { opacity: 0.5; transform: scale(0.7); }
 }
 
-.hero-title {
+/* ---- HERO TYPOGRAPHY HIERARCHY ---- */
+
+/* H1: Largest element — solid dark (near-white in dark mode) for max contrast */
+.hero-h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-size: clamp(3rem, 7vw, 5rem);
   font-weight: 900;
-  line-height: 1.1;
-  margin-bottom: 24px;
-  color: #f8fafc;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: #f8fafc; /* WCAG AA: 15.5:1 on dark bg */
+  margin-bottom: 16px;
 }
 
-.hero-sub-highlight {
+/* H2: Secondary — medium weight, slightly smaller, gradient accent */
+.hero-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.25;
+  color: #94a3b8; /* WCAG AA: 4.7:1 on dark bg */
+  margin-bottom: 0; /* controlled by value badge margin */
+}
+
+.hero-cost-line {
   background: var(--gradient-brand);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: block;
+  margin-top: 4px;
 }
 
-.hero-desc {
-  font-size: 1.15rem;
-  color: var(--text-secondary);
-  max-width: 560px;
-  margin-bottom: 36px;
-  line-height: 1.75;
+/* ---- HERO VALUE BADGE (high-contrast pill above CTAs) ---- */
+.hero-value-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-green);
+  color: #022a1e; /* WCAG AAA: 11:1 contrast on green */
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 7px 16px;
+  border-radius: 100px;
+  margin-top: 28px;
+  margin-bottom: 40px; /* 40px breathing room before CTAs */
+  letter-spacing: 0.01em;
+  box-shadow: 0 4px 20px rgba(0, 229, 160, 0.3), 0 0 0 1px rgba(0, 229, 160, 0.4) inset;
+  /* Override animate-in: badge must always be visible */
+  opacity: 1 !important;
+  transform: none !important;
+  animation: value-badge-pulse 3s ease infinite 0.5s !important;
 }
-.hero-desc strong { color: var(--text-primary); }
+.hero-value-badge svg { flex-shrink: 0; }
+.vbadge-sep {
+  opacity: 0.6;
+  font-size: 0.9rem;
+  margin: 0 2px;
+}
+@keyframes value-badge-pulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(0, 229, 160, 0.3), 0 0 0 1px rgba(0, 229, 160, 0.4) inset; }
+  50% { box-shadow: 0 4px 32px rgba(0, 229, 160, 0.5), 0 0 0 1px rgba(0, 229, 160, 0.6) inset; }
+}
+
+/* ---- HERO BADGE (category — tonal at top) ---- */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 229, 160, 0.08);
+  border: 1px solid rgba(0, 229, 160, 0.2);
+  color: var(--accent-green);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 20px;
+}
+.badge-dot {
+  width: 7px; height: 7px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse-dot 2s ease infinite;
+  flex-shrink: 0;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
 
 .hero-ctas {
   display: flex;
-  gap: 16px;
+  gap: 14px;
   flex-wrap: wrap;
   margin-bottom: 56px;
 }
 
+/* Primary CTA: full-width mobile, vibrant green, 12px radius */
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   background: var(--accent-green);
-  color: #040d1a;
+  color: #022a1e; /* high contrast WCAG AAA */
   font-weight: 800;
   font-size: 1rem;
   padding: 16px 32px;
-  border-radius: 100px;
+  border-radius: 12px; /* 12px per audit */
   transition: all var(--transition);
+  border: none;
+  cursor: pointer;
 }
 .btn-primary:hover {
   background: #00ffb3;
   transform: translateY(-2px);
-  box-shadow: 0 8px 40px rgba(0, 229, 160, 0.35);
+  box-shadow: 0 8px 40px rgba(0, 229, 160, 0.4);
 }
-.btn-primary svg { transition: transform var(--transition); }
+.btn-primary svg { transition: transform var(--transition); flex-shrink: 0; }
 .btn-primary:hover svg { transform: translateX(4px); }
 
+/* Ghost / Secondary CTA: transparent, 1px border per audit */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.45); /* WCAG: visible on dark bg */
+  color: #e2e8f0; /* WCAG AA: 8.5:1 */
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 16px 28px;
+  border-radius: 12px;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(148, 163, 184, 0.7);
+  transform: translateY(-2px);
+}
+.btn-ghost svg { flex-shrink: 0; }
+
+/* Keep .btn-secondary as alias for ghost (other places still use it) */
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-bright);
@@ -385,7 +479,7 @@ input, select, textarea, button { font-family: inherit; }
   font-weight: 600;
   font-size: 1rem;
   padding: 16px 32px;
-  border-radius: 100px;
+  border-radius: 12px;
   transition: all var(--transition);
 }
 .btn-secondary:hover {
@@ -834,7 +928,14 @@ input, select, textarea, button { font-family: inherit; }
   box-shadow: var(--shadow-card);
 }
 
-.feat-icon { font-size: 1.75rem; margin-bottom: 14px; }
+.feat-icon { font-size: 1.75rem; margin-bottom: 14px; color: var(--accent-green); }
+.feat-icon svg { display: block; }
+
+/* Comparison table status indicators */
+.tbl-x     { color: #f87171; font-weight: 700; font-size: 1rem; }
+.tbl-warn  { color: #fbbf24; font-weight: 700; font-size: 0.95rem; border: 1.5px solid #fbbf24; border-radius: 50%; width: 18px; height: 18px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; }
+.tbl-dot-bad  { color: #f87171; font-size: 0.7rem; }
+.tbl-dot-mid  { color: #fbbf24; font-size: 0.7rem; }
 .feature-card h3 {
   font-family: var(--font-display);
   font-size: 1rem;
@@ -1598,6 +1699,146 @@ input, select, textarea, button { font-family: inherit; }
   .math-minus, .math-equals { transform: rotate(90deg); }
 }
 
+/* ============================================================
+   MOBILE HERO CLEANUP — Fix "scam page" wall-of-text issue
+   ============================================================ */
+
+/* By default show full description, hide short version */
+.hero-desc-short { display: none; }
+.hero-desc-full  { display: inline; }
+
+@media (max-width: 768px) {
+  /* Show short copy on mobile, hide the long paragraph */
+  .hero-desc-full  { display: none; }
+  .hero-desc-short { display: inline; }
+
+  /* Hide old hamburger on mobile — replaced by FAB */
+  .hamburger { display: none !important; }
+  .btn-nav { display: none; }
+
+  /* H1: compress on mobile but keep dominant */
+  .hero-h1 {
+    font-size: clamp(2.4rem, 9vw, 3.2rem);
+    line-height: 1.08;
+    margin-bottom: 12px;
+  }
+
+  /* H2: readable sub-heading */
+  .hero-h2 {
+    font-size: clamp(1.1rem, 4.5vw, 1.5rem);
+  }
+
+  /* Value badge stays full-visibility on mobile */
+  .hero-value-badge {
+    font-size: 0.79rem;
+    padding: 6px 14px;
+    margin-top: 20px;
+    margin-bottom: 32px;
+  }
+
+  /* Hero CTAs: stack vertically, full-width on mobile */
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  /* Primary: full-width, vibrant */
+  .btn-primary {
+    width: 100%;
+    padding: 17px 24px;
+    font-size: 1rem;
+    border-radius: 12px;
+  }
+
+  /* Ghost: full-width, border clearly visible */
+  .btn-ghost {
+    width: 100%;
+    padding: 15px 24px;
+    font-size: 0.95rem;
+    border-radius: 12px;
+    border-color: rgba(148, 163, 184, 0.5);
+  }
+
+  /* Compact hero badge on mobile */
+  .hero-badge {
+    font-size: 0.72rem;
+    padding: 5px 11px;
+    margin-bottom: 16px;
+  }
+
+  /* Hide stats and phone mockup on mobile */
+  .hero-stats { display: none; }
+  .hero-visual { display: none; }
+
+  /* Tight hero container */
+  .hero-container {
+    padding-top: 40px;
+    padding-bottom: 48px;
+    text-align: left;
+  }
+  .hero-left { align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+  .hero-container {
+    padding-top: 32px;
+    padding-bottom: 36px;
+  }
+
+  .hero-h1 {
+    font-size: clamp(2rem, 10vw, 2.6rem);
+  }
+
+  .hero-h2 {
+    font-size: clamp(1rem, 4.8vw, 1.25rem);
+  }
+}
+
+/* ============================================================
+   PERFORMANCE — Font fallback & content-visibility
+   ============================================================ */
+
+/* Fallback font stack so faux text renders before Google Fonts load */
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+.hero-h1, .hero-h2, .section-title, .agent-title, .plan-name,
+.pain-stat, .grant-amount, .math-val, .stat-num {
+  font-family: 'Outfit', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Defer rendering cost for below-fold sections */
+.problem-section,
+.how-section,
+.features-section,
+.comparison-section,
+.grants-section,
+.pricing-section,
+.roi-section,
+.testimonials-section,
+.contact-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px; /* approximate height to prevent layout shift */
+}
+
+/* Reduce forced reflow: hint GPU layers for animated orbs */
+.orb {
+  will-change: transform;
+  contain: layout style;
+}
+
+/* Reduce forced reflow on ticker */
+.ticker {
+  will-change: transform;
+}
+
+/* Use cache-friendly contain on cards */
+.pain-card, .agent-card, .feature-card, .grant-card, .testimonial-card {
+  contain: layout style;
+}
+
 /* ---- SCROLLBAR ---- */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
@@ -2197,4 +2438,254 @@ input, select, textarea, button { font-family: inherit; }
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+
+/* ================================================================
+   FAB MENU TRIGGER — Thumb Zone (bottom-right, mobile only)
+   ================================================================ */
+
+.fab-menu {
+  display: none; /* Hidden on desktop */
+  position: fixed;
+  bottom: 28px;
+  right: 24px;
+  z-index: 1100;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--accent-green);
+  color: #022a1e;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 24px rgba(0, 229, 160, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fab-menu:hover, .fab-menu:focus-visible {
+  background: #00ffb3;
+  transform: scale(1.08);
+  box-shadow: 0 6px 32px rgba(0, 229, 160, 0.55), 0 2px 12px rgba(0, 0, 0, 0.35);
+  outline: none;
+}
+
+.fab-menu:active {
+  transform: scale(0.96);
+}
+
+/* FAB shows its close icon when drawer is open */
+.fab-menu.is-open svg {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .fab-menu { display: flex; }
+}
+
+
+/* ================================================================
+   MOBILE DRAWER — Glassmorphism slide-in panel
+   ================================================================ */
+
+.mobile-drawer {
+  display: none; /* JS will toggle visibility */
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  pointer-events: none;
+}
+
+.mobile-drawer.is-open {
+  display: block;
+  pointer-events: all;
+}
+
+/* Frosted backdrop */
+.drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 13, 26, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.mobile-drawer.is-open .drawer-backdrop {
+  opacity: 1;
+}
+
+/* Glassmorphism side panel — slides in from right */
+.drawer-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  background: rgba(7, 20, 40, 0.85);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-left: 1px solid rgba(99, 179, 237, 0.15);
+  box-shadow: -8px 0 48px rgba(0, 0, 0, 0.5), inset 1px 0 0 rgba(255,255,255,0.04);
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  transform: translateX(110%);
+  transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+.mobile-drawer.is-open .drawer-panel {
+  transform: translateX(0);
+}
+
+/* Drawer header: logo + close button */
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.drawer-header .logo {
+  font-size: 1.2rem;
+}
+
+.drawer-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+.drawer-close:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.2);
+  transform: rotate(90deg);
+}
+
+/* Drawer nav links */
+.drawer-links {
+  padding: 24px 0;
+  flex: 1;
+}
+.drawer-links li {
+  list-style: none;
+}
+.drawer-links a {
+  display: flex;
+  align-items: center;
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-left: 3px solid transparent;
+  transition: all 0.2s ease;
+  letter-spacing: -0.01em;
+}
+.drawer-links a:hover {
+  color: var(--accent-green);
+  border-left-color: var(--accent-green);
+  background: rgba(0, 229, 160, 0.05);
+  padding-left: 28px;
+}
+
+/* Drawer CTA + theme toggle */
+.drawer-cta {
+  padding: 20px 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.drawer-btn {
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  border-radius: 12px !important;
+  padding: 15px 24px !important;
+  font-size: 0.95rem !important;
+}
+.drawer-theme {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  padding: 12px 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  transition: background 0.2s ease;
+  font-family: inherit;
+}
+.drawer-theme:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--text-primary);
+}
+
+/* ===== Light mode overrides for FAB + Drawer ===== */
+
+[data-theme="light"] .fab-menu {
+  background: #059669;
+  color: #FFFFFF;
+  box-shadow: 0 4px 24px rgba(5, 150, 105, 0.4), 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+[data-theme="light"] .fab-menu:hover {
+  background: #047857;
+  box-shadow: 0 6px 32px rgba(5, 150, 105, 0.5);
+}
+
+[data-theme="light"] .drawer-backdrop {
+  background: rgba(249, 250, 247, 0.55);
+}
+[data-theme="light"] .drawer-panel {
+  background: rgba(250, 250, 247, 0.92);
+  border-left-color: rgba(30, 25, 20, 0.1);
+  box-shadow: -8px 0 48px rgba(0, 0, 0, 0.12);
+}
+[data-theme="light"] .drawer-header {
+  border-bottom-color: rgba(30, 25, 20, 0.08);
+}
+[data-theme="light"] .drawer-close {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.08);
+  color: #111827;
+}
+[data-theme="light"] .drawer-links a {
+  color: #111827;
+}
+[data-theme="light"] .drawer-links a:hover {
+  color: #047857;
+  border-left-color: #059669;
+  background: rgba(5, 150, 105, 0.06);
+}
+[data-theme="light"] .drawer-cta {
+  border-top-color: rgba(30, 25, 20, 0.08);
+}
+[data-theme="light"] .drawer-theme {
+  background: rgba(0,0,0,0.03);
+  border-color: rgba(0,0,0,0.08);
+  color: #374151;
+}
+
+/* ===== Light mode hero overrides for new classes ===== */
+[data-theme="light"] .hero-h1 { color: #111827; }
+[data-theme="light"] .hero-h2 { color: #4B5563; }
+[data-theme="light"] .hero-value-badge {
+  background: #059669;
+  color: #FFFFFF;
+  box-shadow: 0 4px 20px rgba(5, 150, 105, 0.3), 0 0 0 1px rgba(5, 150, 105, 0.4) inset;
 }

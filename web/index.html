@@ -4,11 +4,177 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HeyZenzai — AI WhatsApp Booking Agent for Beauty &amp; Wellness SMEs</title>
-  <meta name="description" content="HeyZenzai automates your WhatsApp bookings with AI. Cut no-shows by up to 80%, respond in under 5 seconds, and capture after-hours revenue — all for less than the cost of a part-time receptionist. Launching in Singapore, expanding globally." />
+  <meta name="description" content="HeyZenzai automates your WhatsApp bookings with AI. Cut no-shows by up to 80%, respond in under 5 seconds, and capture after-hours revenue — all for less than the cost of a part-time receptionist. Launching in Singapore." />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="HeyZenzai" />
+  <link rel="canonical" href="https://heyzenzai.com/" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://heyzenzai.com/" />
+  <meta property="og:title" content="HeyZenzai — AI WhatsApp Booking Agent for Beauty &amp; Wellness" />
+  <meta property="og:description" content="Automate WhatsApp bookings with AI. Cut no-shows by 80%, respond in under 5 seconds, capture after-hours revenue. From SGD 39/month." />
+  <meta property="og:image" content="https://heyzenzai.com/assets/og-image.png" />
+  <meta property="og:locale" content="en_SG" />
+  <meta property="og:site_name" content="HeyZenzai" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HeyZenzai — AI WhatsApp Booking Agent" />
+  <meta name="twitter:description" content="AI-powered WhatsApp front desk for beauty &amp; wellness clinics. Never miss a booking again." />
+  <meta name="twitter:image" content="https://heyzenzai.com/assets/og-image.png" />
+
+  <!-- Performance: Preconnect to font origins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- Load fonts async with display=swap to eliminate render-blocking -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800;900&display=swap" rel="stylesheet" /></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
+
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Schema.org JSON-LD: SoftwareApplication + Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://heyzenzai.com/#app",
+        "name": "HeyZenzai",
+        "url": "https://heyzenzai.com",
+        "description": "AI-powered WhatsApp booking agent for beauty and wellness clinics. Automates appointments, cuts no-shows by up to 80%, and captures after-hours bookings — 24/7, at a fraction of a receptionist's cost.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "WhatsApp (iOS, Android, Web)",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Starter Plan",
+            "price": "49",
+            "priceCurrency": "SGD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "49",
+              "priceCurrency": "SGD",
+              "unitText": "month"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Growth Plan",
+            "price": "149",
+            "priceCurrency": "SGD",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "149",
+              "priceCurrency": "SGD",
+              "unitText": "month"
+            }
+          }
+        ],
+        "featureList": [
+          "WhatsApp Business API integration",
+          "AI-powered booking automation",
+          "No-show reduction up to 80%",
+          "Sub-5-second response time",
+          "Google & Apple Calendar sync",
+          "Automated appointment reminders",
+          "PDPA compliant data handling",
+          "24/7 availability",
+          "Multi-intent query handling",
+          "Zero hallucination AI architecture"
+        ],
+        "provider": { "@id": "https://heyzenzai.com/#org" },
+        "audience": {
+          "@type": "BusinessAudience",
+          "audienceType": "Beauty and wellness clinics, spas, salons, aesthetic clinics in Singapore"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://heyzenzai.com/#org",
+        "name": "HeyZenzai",
+        "url": "https://heyzenzai.com",
+        "description": "Singapore-based AI startup building WhatsApp booking automation for beauty and wellness SMEs.",
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Singapore"
+        },
+        "areaServed": [
+          { "@type": "Country", "name": "Singapore" },
+          { "@type": "Country", "name": "Malaysia" }
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Sales",
+          "availableLanguage": ["English"]
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://heyzenzai.com/#webpage",
+        "url": "https://heyzenzai.com/",
+        "name": "HeyZenzai — AI WhatsApp Booking Agent for Beauty & Wellness SMEs",
+        "description": "Automate your WhatsApp front desk with AI. Cut no-shows by 80%, respond in under 5 seconds, and capture after-hours bookings.",
+        "publisher": { "@id": "https://heyzenzai.com/#org" },
+        "mainEntity": { "@id": "https://heyzenzai.com/#app" },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".hero-title", ".hero-desc", ".section-title"]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much does HeyZenzai cost?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "HeyZenzai starts at SGD 49/month for the Starter plan. The Growth plan is SGD 149/month. Annual plans receive a setup fee waiver and a 20% discount."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does HeyZenzai reduce no-shows?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "HeyZenzai's Retention Engine sends automated WhatsApp reminders before every appointment, reducing no-show rates from the industry average of 18% to under 3%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does HeyZenzai integrate with Google Calendar?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, HeyZenzai integrates directly with Google Calendar and Apple Calendar. No new POS software or migration is required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is HeyZenzai PDPA compliant?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. HeyZenzai acts as a Data Intermediary, collecting only booking-required information. Client data is never used to train AI models and is never shared with third parties, in full compliance with Singapore's PDPA."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How long does setup take?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "HeyZenzai's concierge onboarding handles everything — WhatsApp Business API setup, calendar sync, and service menu ingestion — and you're live within 48 hours."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- reCAPTCHA deferred until page is interactive -->
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
@@ -20,6 +186,7 @@
         <span class="logo-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
         <span class="logo-text">HeyZen<span class="logo-accent">zai</span></span>
       </a>
+      <!-- Desktop nav links (hidden on mobile, shown on desktop) -->
       <ul class="nav-links" id="nav-links">
         <li><a href="#how-it-works">How It Works</a></li>
         <li><a href="#problem">The Problem</a></li>
@@ -29,11 +196,48 @@
       </ul>
       <button class="theme-toggle" id="theme-toggle-btn" onclick="toggleTheme()" aria-label="Toggle theme">☀️</button>
       <a href="#contact" class="btn-nav" id="nav-cta">Request Early Access</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <!-- Desktop hamburger fallback (hidden on mobile, replaced by FAB) -->
+      <button class="hamburger hamburger--desktop" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
+
+  <!-- ====== MOBILE FAB MENU TRIGGER (Thumb Zone) ====== -->
+  <button class="fab-menu" id="fab-menu" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="3" y1="6" x2="21" y2="6"/>
+      <line x1="3" y1="12" x2="21" y2="12"/>
+      <line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+
+  <!-- ====== MOBILE DRAWER (Glassmorphism) ====== -->
+  <div class="mobile-drawer" id="mobile-drawer" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <nav class="drawer-panel">
+      <div class="drawer-header">
+        <span class="logo">
+          <span class="logo-icon"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg></span>
+          <span class="logo-text">HeyZen<span class="logo-accent">zai</span></span>
+        </span>
+        <button class="drawer-close" id="drawer-close" aria-label="Close menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <ul class="drawer-links">
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#problem">The Problem</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#early-access">Early Access</a></li>
+      </ul>
+      <div class="drawer-cta">
+        <a href="#contact" class="btn-primary drawer-btn">Request Early Access →</a>
+        <button class="theme-toggle drawer-theme" onclick="toggleTheme()" aria-label="Toggle theme" id="drawer-theme-btn">☀️ Toggle Theme</button>
+      </div>
+    </nav>
+  </div>
 
   <!-- ====== HERO ====== -->
   <section class="hero" id="hero">
@@ -46,28 +250,42 @@
     <div class="container hero-container">
       <!-- LEFT COLUMN -->
       <div class="hero-left">
+
+        <!-- Category badge: tonal, not the value badge -->
         <div class="hero-badge animate-in" style="--delay:0s">
           <span class="badge-dot"></span>
           AI WhatsApp Booking Agent for Beauty &amp; Wellness
         </div>
-        <h1 class="hero-title animate-in" style="--delay:0.1s">
-          Your <span class="gradient-text">WhatsApp Front Desk</span><br/>
-          Never Sleeps. Never Misses.<br/>
-          <span class="hero-sub-highlight">A fraction of a receptionist's cost.</span>
-        </h1>
-        <p class="hero-desc animate-in" style="--delay:0.2s">
-          HeyZenzai's AI booking agent answers every WhatsApp inquiry in <strong>&lt;5 seconds</strong>, eliminates no-shows by up to <strong>80%</strong>, and captures after-hours bookings your team misses — from <strong>SGD 39/month</strong> on an annual plan.
-        </p>
-        <div class="hero-ctas animate-in" style="--delay:0.3s">
+
+        <!-- H1: Largest element — solid color, max visual weight -->
+        <h1 class="hero-h1 animate-in" style="--delay:0.1s">Your WhatsApp<br/>Front Desk</h1>
+
+        <!-- H2: Secondary — medium weight, slightly smaller -->
+        <h2 class="hero-h2 animate-in" style="--delay:0.18s">Never Sleeps. Never Misses.<br/>
+          <span class="hero-cost-line">A fraction of a receptionist's cost.</span>
+        </h2>
+
+        <!-- Value Badge: high-contrast pill above CTAs -->
+        <div class="hero-value-badge animate-in" style="--delay:0.26s" role="note" aria-label="Key value proposition">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          AI answers in &lt;5s
+          <span class="vbadge-sep" aria-hidden="true">•</span>
+          From SGD 39/mo
+        </div>
+
+        <!-- CTAs with 40px breathing room from headline -->
+        <div class="hero-ctas animate-in" style="--delay:0.34s">
           <a href="#contact" class="btn-primary" id="hero-cta-primary">
             <span>Request Early Access</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
-          <a href="#how-it-works" class="btn-secondary" id="hero-cta-secondary">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/></svg>
+          <a href="#how-it-works" class="btn-ghost" id="hero-cta-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="M10 8l6 4-6 4V8z" fill="currentColor"/></svg>
             See How It Works
           </a>
         </div>
+
+        <!-- Stats bar: desktop only -->
         <div class="hero-stats animate-in" style="--delay:0.5s">
           <div class="stat">
             <span class="stat-num" data-target="80">0</span><span class="stat-unit">%</span>
@@ -299,7 +517,7 @@
 
       <div class="features-grid">
         <div class="feature-card feature-card--large" id="feat-1">
-          <div class="feat-icon">💬</div>
+          <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg></div>
           <h3>Native WhatsApp Integration</h3>
           <p>Clients never leave WhatsApp. No external web links. No app downloads. No friction. Just seamless, instant conversation — the way Singaporeans already communicate.</p>
           <div class="feat-tag">✓ 98% Open Rate</div>
@@ -310,17 +528,17 @@
           <p>Every inquiry answered instantly, even at 2 AM on a Sunday. Never lose another lead to a slow reply.</p>
         </div>
         <div class="feature-card" id="feat-3">
-          <div class="feat-icon">🚫</div>
+          <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg></div>
           <h3>Zero Hallucinations</h3>
           <p>Strict JSON enforcement prevents AI from inventing prices, availability, or services. Clinically precise every time.</p>
         </div>
         <div class="feature-card" id="feat-4">
-          <div class="feat-icon">📆</div>
+          <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg></div>
           <h3>Multi-Intent Query Handling</h3>
           <p>"Reschedule my facial AND ask about laser" — handled in one message. No bot confusion. No dead ends.</p>
         </div>
         <div class="feature-card" id="feat-5">
-          <div class="feat-icon">🔔</div>
+          <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></div>
           <h3>Automated Reminders</h3>
           <p>Pre-appointment reminders sent automatically. No-show rates drop from 18% to under 3%, recovering SGD 50K+ per year.</p>
         </div>
@@ -336,17 +554,17 @@
           <div class="feat-tag">✓ Legally Safe to Deploy</div>
         </div>
         <div class="feature-card" id="feat-8">
-          <div class="feat-icon">🔗</div>
+          <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line><path d="m9 16 2 2 4-4"></path></svg></div>
           <h3>Calendar Integration</h3>
           <p>Direct sync with Google Calendar & Apple Calendar. No new POS to install, no migration headaches.</p>
         </div>
         <div class="feature-card" id="feat-9">
-          <div class="feat-icon">🌍</div>
+          <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
           <h3>Platform Independent</h3>
           <p>Built on portable AI infrastructure. If WhatsApp changes pricing, we move to Telegram or web chat — zero disruption to your operations.</p>
         </div>
         <div class="feature-card" id="feat-10">
-          <div class="feat-icon">📊</div>
+          <div class="feat-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></div>
           <h3>Revenue Analytics</h3>
           <p>Track bookings, no-show rates, after-hours capture, and revenue recovery — all in a lightweight, clean dashboard.</p>
         </div>
@@ -380,26 +598,26 @@
             </tr>
             <tr>
               <td>WhatsApp Native Booking</td>
-              <td class="col-zenoti bad">❌ Expensive add-on</td>
-              <td class="col-fresha bad">❌ Forces clients to external web links</td>
+              <td class="col-zenoti bad"><span class="tbl-x">✕</span> Expensive add-on</td>
+              <td class="col-fresha bad"><span class="tbl-x">✕</span> Forces clients to external web links</td>
               <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Fully native in-chat</td>
             </tr>
             <tr>
               <td>Multi-Intent AI Handling</td>
-              <td class="col-zenoti mid">⚠️ Complex, costly AI bolt-on</td>
-              <td class="col-fresha bad">❌ None</td>
+              <td class="col-zenoti mid"><span class="tbl-warn">!</span> Complex, costly AI bolt-on</td>
+              <td class="col-fresha bad"><span class="tbl-x">✕</span> None</td>
               <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Core architecture</td>
             </tr>
             <tr>
               <td>Hallucination Risk</td>
-              <td class="col-zenoti mid">⚠️ Present in AI modules</td>
+              <td class="col-zenoti mid"><span class="tbl-warn">!</span> Present in AI modules</td>
               <td class="col-fresha mid">N/A</td>
               <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Zero — deterministic JSON</td>
             </tr>
             <tr>
               <td>No-Show Reminders</td>
-              <td class="col-zenoti mid">⚠️ Manual or expensive module</td>
-              <td class="col-fresha mid">⚠️ Basic SMS/Email only</td>
+              <td class="col-zenoti mid"><span class="tbl-warn">!</span> Manual or expensive module</td>
+              <td class="col-fresha mid"><span class="tbl-warn">!</span> Basic SMS/Email only</td>
               <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Automated WhatsApp reminders</td>
             </tr>
             <tr>
@@ -416,8 +634,8 @@
             </tr>
             <tr>
               <td>Setup Complexity</td>
-              <td class="col-zenoti bad">🔴 Months of integration</td>
-              <td class="col-fresha mid">🟡 Medium</td>
+              <td class="col-zenoti bad"><span class="tbl-dot-bad">●</span> Months of integration</td>
+              <td class="col-fresha mid"><span class="tbl-dot-mid">●</span> Medium</td>
               <td class="col-us good"><svg class="ui-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Live in 48 hours</td>
             </tr>
           </tbody>
@@ -811,6 +1029,6 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js" defer></script>
 </body>
 </html>

@@ -2,25 +2,86 @@
    HEYZENZAI — Interactive JavaScript
    ============================================ */
 
-// ---- NAV: Scroll + Mobile ----
+// ---- NAV: Scroll state ----
 const navbar = document.getElementById('navbar');
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('nav-links');
 
 window.addEventListener('scroll', () => {
   if (window.scrollY > 30) navbar.classList.add('scrolled');
   else navbar.classList.remove('scrolled');
+}, { passive: true });
+
+// ---- MOBILE FAB + GLASSMORPHISM DRAWER ----
+const fabBtn       = document.getElementById('fab-menu');
+const drawer       = document.getElementById('mobile-drawer');
+const drawerClose  = document.getElementById('drawer-close');
+const drawerBack   = document.getElementById('drawer-backdrop');
+const drawerLinks  = drawer ? drawer.querySelectorAll('.drawer-links a, .drawer-btn') : [];
+const drawerTheme  = document.getElementById('drawer-theme-btn');
+
+function openDrawer() {
+  if (!drawer || !fabBtn) return;
+  drawer.classList.add('is-open');
+  drawer.setAttribute('aria-hidden', 'false');
+  fabBtn.classList.add('is-open');
+  fabBtn.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+  // Move focus into drawer for a11y
+  if (drawerClose) setTimeout(() => drawerClose.focus(), 50);
+}
+
+function closeDrawer() {
+  if (!drawer || !fabBtn) return;
+  drawer.classList.remove('is-open');
+  drawer.setAttribute('aria-hidden', 'true');
+  fabBtn.classList.remove('is-open');
+  fabBtn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+  fabBtn.focus();
+}
+
+if (fabBtn)      fabBtn.addEventListener('click', openDrawer);
+if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+if (drawerBack)  drawerBack.addEventListener('click', closeDrawer);
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && drawer && drawer.classList.contains('is-open')) {
+    closeDrawer();
+  }
 });
 
-hamburger.addEventListener('click', () => {
-  navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open');
+// Close on any nav link click inside drawer
+drawerLinks.forEach(link => {
+  link.addEventListener('click', closeDrawer);
 });
 
-// Close mobile menu on link click
-navLinks.querySelectorAll('a').forEach(a => {
-  a.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+// Sync drawer theme button with main theme toggle
+if (drawerTheme) {
+  drawerTheme.addEventListener('click', () => {
+    toggleTheme();
+    // Update icon in drawer
+    const current = document.documentElement.getAttribute('data-theme') || 'dark';
+    drawerTheme.innerHTML = (current === 'light' ? '🌙' : '☀️') + ' Toggle Theme';
+  });
+}
+
+// ---- OLD HAMBURGER (desktop fallback) — kept for screens 769–1024px ----
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.getElementById('nav-links');
+
+if (hamburger && navLinks) {
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    hamburger.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+  });
+
+  // Close desktop menu on link click
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+}
+
 
 
 // ---- SCROLL REVEAL ----
@@ -256,14 +317,19 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 
-// ---- PARTICLE CANVAS (hero background) ----
-(function() {
+// ---- PARTICLE CANVAS (hero background) — deferred, mobile-optimized ----
+function initParticles() {
+  const heroEl = document.querySelector('.hero');
+  if (!heroEl) return;
+
   const canvas = document.createElement('canvas');
   canvas.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.4';
-  document.querySelector('.hero').prepend(canvas);
+  heroEl.prepend(canvas);
 
   const ctx = canvas.getContext('2d');
   let w, h, particles;
+  // Reduce particle count on mobile to ease main-thread load
+  const PARTICLE_COUNT = window.innerWidth < 768 ? 20 : 60;
 
   function resize() {
     w = canvas.width = canvas.offsetWidth;
@@ -271,7 +337,7 @@ window.addEventListener('scroll', () => {
   }
 
   function createParticles() {
-    particles = Array.from({ length: 60 }, () => ({
+    particles = Array.from({ length: PARTICLE_COUNT }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
       r: Math.random() * 1.5 + 0.5,
@@ -295,20 +361,22 @@ window.addEventListener('scroll', () => {
       if (p.y < 0 || p.y > h) p.dy *= -1;
     });
 
-    // Draw connections
-    particles.forEach((a, i) => {
-      particles.slice(i + 1).forEach(b => {
-        const dist = Math.hypot(a.x - b.x, a.y - b.y);
-        if (dist < 120) {
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = `rgba(59, 130, 246, ${0.08 * (1 - dist / 120)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
+    // Draw connections (desktop only for performance)
+    if (window.innerWidth >= 768) {
+      particles.forEach((a, i) => {
+        particles.slice(i + 1).forEach(b => {
+          const dist = Math.hypot(a.x - b.x, a.y - b.y);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            ctx.strokeStyle = `rgba(59, 130, 246, ${0.08 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        });
       });
-    });
+    }
 
     requestAnimationFrame(draw);
   }
@@ -317,7 +385,14 @@ window.addEventListener('scroll', () => {
   resize();
   createParticles();
   draw();
-})();
+}
+
+// Defer particle init until browser is idle (after LCP)
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(initParticles, { timeout: 2000 });
+} else {
+  setTimeout(initParticles, 1000);
+}
 
 
 // ---- PRICING TOGGLE HOVER EFFECTS ----
